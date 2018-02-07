@@ -48,39 +48,6 @@ class User extends BaseUser
      */
     private $picture = "";
 
-
-    /**
-     * @param mixed $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @param mixed $image
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNom()
-    {
-        return $this->$nom;
-    }
-
-    /**
-     * @param mixed $nom
-     */
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-    }
-
     /**
      * @return mixed
      */
@@ -95,6 +62,22 @@ class User extends BaseUser
     public function setAdress($adress)
     {
         $this->adress = $adress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -176,7 +159,6 @@ class User extends BaseUser
     {
         $this->picture = $picture;
     }
-
 
 
 
