@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new OM\EspaceUserBundle\OMEspaceUserBundle(),
+            new OM\LocalisationBundle\OMLocalisationBundle(),
+            new OM\AdministrationBundle\OMAdministrationBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

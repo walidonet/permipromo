@@ -1,3 +1,11 @@
+om_administration:
+    resource: "@OMAdministrationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+om_localisation:
+    resource: "@OMLocalisationBundle/Resources/config/routing.yml"
+    prefix:   /
+
 om_espace_user:
     resource: "@OMEspaceUserBundle/Resources/config/routing.yml"
     prefix:   /

@@ -26,15 +26,28 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string")
      */
-    private $nom = "";
+    private $firstname = "";
     /**
      * @ORM\Column(type="string")
      */
-    private $prenom = "";
+    private $lastname = "";
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $idcard = "";
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $phone = "";
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $adress = "";
     /**
      * @ORM\Column(type="blob")
      */
-    private $image = "";
+    private $picture = "";
+
 
     /**
      * @param mixed $id
@@ -57,7 +70,7 @@ class User extends BaseUser
      */
     public function getNom()
     {
-        return $this->nom;
+        return $this->$nom;
     }
 
     /**
@@ -67,6 +80,104 @@ class User extends BaseUser
     {
         $this->nom = $nom;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    /**
+     * @param mixed $adress
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param mixed $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param mixed $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdcard()
+    {
+        return $this->idcard;
+    }
+
+    /**
+     * @param mixed $idcard
+     */
+    public function setIdcard($idcard)
+    {
+        $this->idcard = $idcard;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param mixed $picture
+     */
+    public function setPicture($picture)
+    {
+        $this->picture = $picture;
+    }
+
+
 
 
 
