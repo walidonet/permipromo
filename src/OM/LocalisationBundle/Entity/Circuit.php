@@ -33,6 +33,11 @@ class Circuit
      */
     private $latitude = "";
 
+    /**
+     * @ORM\ManyToOne(targetEntity="OM\LocalisationBundle\Entity\Follow", inversedBy="circuits")
+     * @ORM\JoinColumn(name="follow_id", referencedColumnName="id")
+     * @ORM\JoinColumn(nullable=true)
+     */
     private $follow;
 
     /**

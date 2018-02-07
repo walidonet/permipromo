@@ -15,9 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller managing the registration.
- *
- * @author Thibault Duplessis <thibault.duplessis@gmail.com>
- * @author Christophe Coevoet <stof@notk.org>
+
  */
 class RegistrationController extends BaseController
 {

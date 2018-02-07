@@ -9,6 +9,7 @@
 namespace OM\LocalisationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  *
  *
@@ -32,8 +33,11 @@ class Follow
      * @ORM\Column(type="datetime")
      */
     private $end;
+    /**
+     * @ORM\OneToMany(targetEntity="OM\LocalisationBundle\Entity\Circuit", mappedBy="follow")
+     */
 
-    private $circuit;
+    private $circuits;
 
     /**
      * @return mixed
@@ -86,18 +90,19 @@ class Follow
     /**
      * @return mixed
      */
-    public function getCircuit()
+    public function getCircuits()
     {
-        return $this->circuit;
+        return $this->circuits;
     }
 
     /**
-     * @param mixed $circuit
+     * @param mixed $circuits
      */
-    public function setCircuit($circuit)
+    public function setCircuits($circuits)
     {
-        $this->circuit = $circuit;
+        $this->circuits = $circuits;
     }
+
 
 
 }
