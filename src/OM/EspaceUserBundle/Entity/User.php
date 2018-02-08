@@ -63,6 +63,17 @@ class User extends BaseUser
     private $clients;
 
     /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+        $this->roles = array('ROLE_CLIENT');
+    }
+
+
+    /**
      * @return mixed
      */
     public function getAdress()
