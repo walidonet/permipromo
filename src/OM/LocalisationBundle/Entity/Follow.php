@@ -8,6 +8,8 @@
 
 namespace OM\LocalisationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\OneToOne;
 
 
 /**
@@ -34,9 +36,13 @@ class Follow
      */
     private $end;
     /**
+     * @OneToOne(targetEntity="OM\AdministrationBundle\Entity\Meeting")
+     * @JoinColumn(name="meeting_id", referencedColumnName="id")
+     */
+    private $meeting;
+    /**
      * @ORM\OneToMany(targetEntity="OM\LocalisationBundle\Entity\Circuit", mappedBy="follow")
      */
-
     private $circuits;
 
     /**

@@ -8,6 +8,8 @@
 
 namespace OM\AdministrationBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\OneToOne;
 
 /**
  *
@@ -28,6 +30,11 @@ class Folder
      * @ORM\Column(type="string")
      */
     private $etat = "";
+    /**
+     * @OneToOne(targetEntity="OM\EspaceUserBundle\Entity\User")
+     * @JoinColumn(name="client_id", referencedColumnName="id")
+     */
+    private $client;
 
     /**
      * @return mixed
@@ -60,6 +67,23 @@ class Folder
     {
         $this->etat = $etat;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param mixed $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
 
 
 

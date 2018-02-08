@@ -47,6 +47,20 @@ class User extends BaseUser
      * @ORM\Column(type="blob")
      */
     private $picture = "";
+    /**
+     * @ORM\OneToMany(targetEntity="OM\AdministrationBundle\Entity\Meeting", mappedBy="client")
+     */
+    private $meetings;
+    /**
+     * @ORM\ManyToOne(targetEntity="OM\EspaceUserBundle\Entity\User", inversedBy="clients")
+     * @ORM\JoinColumn(name="monitor_id", referencedColumnName="id")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $monitor;
+    /**
+     * @ORM\OneToMany(targetEntity="OM\EspaceUserBundle\Entity\User", mappedBy="monitor")
+     */
+    private $clients;
 
     /**
      * @return mixed
@@ -159,6 +173,57 @@ class User extends BaseUser
     {
         $this->picture = $picture;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMeetings()
+    {
+        return $this->meetings;
+    }
+
+    /**
+     * @param mixed $meetings
+     */
+    public function setMeetings($meetings)
+    {
+        $this->meetings = $meetings;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClients()
+    {
+        return $this->clients;
+    }
+
+    /**
+     * @param mixed $clients
+     */
+    public function setClients($clients)
+    {
+        $this->clients = $clients;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMonitor()
+    {
+        return $this->monitor;
+    }
+
+    /**
+     * @param mixed $monitor
+     */
+    public function setMonitor($monitor)
+    {
+        $this->monitor = $monitor;
+    }
+
+
+
 
 
 

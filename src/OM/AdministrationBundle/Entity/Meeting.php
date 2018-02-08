@@ -36,6 +36,12 @@ class Meeting
      * @ORM\Column(type="time")
      */
     private $end;
+    /**
+     * @ORM\ManyToOne(targetEntity="OM\EspaceUserBundle\Entity\User", inversedBy="meetings")
+     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $client;
 
     /**
      * @return mixed
@@ -100,6 +106,23 @@ class Meeting
     {
         $this->end = $end;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * @param mixed $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
+
 
 
 
