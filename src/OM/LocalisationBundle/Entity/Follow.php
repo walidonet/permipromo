@@ -109,6 +109,23 @@ class Follow
         $this->circuits = $circuits;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getMeeting()
+    {
+        return $this->meeting;
+    }
+
+    /**
+     * @param mixed $meeting
+     */
+    public function setMeeting($meeting)
+    {
+        $this->meeting = $meeting;
+    }
+    
+
 
 
 }
