@@ -15,3 +15,9 @@ app:
     type: annotation
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+#tag rest
+tag:
+    resource: "@OMAdministrationBundle/Controller/TagController.php"
+    prefix:   /
+    type:     rest
