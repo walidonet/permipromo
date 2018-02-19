@@ -20,6 +20,11 @@ class AppKernel extends Kernel
             new OM\EspaceUserBundle\OMEspaceUserBundle(),
             new OM\LocalisationBundle\OMLocalisationBundle(),
             new OM\AdministrationBundle\OMAdministrationBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+            new OM\AuthBundle\OMAuthBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -11,24 +11,15 @@ security:
 
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email
 
     firewalls:
-        main:
-            pattern: ^/
-            form_login:
-                provider: fos_userbundle
-                csrf_token_generator: security.csrf.token_manager
+        oauth_token:                                   # Everyone can access the access token URL.
+            pattern: ^/oauth/v2/token
+            security: false
 
-            logout:       true
-            anonymous:    true
-
-    access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
-        - { path: ^/client/, role: ROLE_CLIENT }
-        - { path: ^/prospect/, role: ROLE_PROSPECT }
-        - { path: ^/worker/, role: ROLE_WORKER }
-        - { path: ^/monitor/, role: ROLE_MONITOR }
+        api:
+            pattern: ^/api                              # All URLs are protected
+            fos_oauth: true                            # OAuth2 protected resource
+            stateless: true                           # Anonymous access is not allowed
+            anonymous: false
