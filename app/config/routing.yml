@@ -27,8 +27,31 @@ NelmioApiDocBundle:
 
 fos_oauth_server_token:
     resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+    methods:  [GET, POST, OPTIONS]
 
 
 user_api_demos:
     type: rest
     resource: OM\EspaceUserBundle\Controller\DemoController
+
+#test_rest
+test:
+    resource: "@OMAdministrationBundle/Controller/DefaultController.php"
+    prefix:   /
+    type:     rest
+#user
+user:
+    resource: "@OMEspaceUserBundle/Controller/UserController.php"
+    prefix:   /
+    type:     rest
+#register
+signup:
+    resource: "@OMEspaceUserBundle/Controller/RegistrationController.php"
+    prefix:   /
+    type:     rest
+#session
+session:
+    resource: "@OMAuthBundle/Controller/SessionController.php"
+    prefix:   /
+    type:     rest
+

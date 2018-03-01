@@ -6,6 +6,7 @@
  * Time: 11:42
  */
 namespace OM\EspaceUserBundle\Entity;
+use Doctrine\Common\Collections\Collection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 /**
@@ -24,29 +25,89 @@ class User extends BaseUser
      */
     protected $id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $firstname = "";
+    private $firstname ;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
-    private $lastname = "";
+    private $lastname ;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $idcard = "";
+    private $idcard ;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $phone = "";
+    private $phone ;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $adress = "";
+    private $phone2 ;
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $picture = "";
+    private $adress ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $adress2 ;
+    /**
+     * @ORM\Column(type="blob", nullable=true)
+     */
+    private $picture ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $note ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $calltype ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $fb ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $insta ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $network ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $offre ;
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $confrdv ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $confirmation ;
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $rdvdep ;
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $rdvfin ;
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    protected $starcount;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $paiementmode ;
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $paiement ;
     /**
      * @ORM\OneToMany(targetEntity="OM\AdministrationBundle\Entity\Meeting", mappedBy="client")
      */
@@ -230,6 +291,354 @@ class User extends BaseUser
     {
         $this->monitor = $monitor;
     }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsernameCanonical()
+    {
+        return $this->usernameCanonical;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmailCanonical()
+    {
+        return $this->emailCanonical;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getLastLogin()
+    {
+        return $this->lastLogin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getConfirmationToken()
+    {
+        return $this->confirmationToken;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPasswordRequestedAt()
+    {
+        return $this->passwordRequestedAt;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone2()
+    {
+        return $this->phone2;
+    }
+
+    /**
+     * @param mixed $phone2
+     */
+    public function setPhone2($phone2)
+    {
+        $this->phone2 = $phone2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdress2()
+    {
+        return $this->adress2;
+    }
+
+    /**
+     * @param mixed $adress2
+     */
+    public function setAdress2($adress2)
+    {
+        $this->adress2 = $adress2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param mixed $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCalltype()
+    {
+        return $this->calltype;
+    }
+
+    /**
+     * @param mixed $calltype
+     */
+    public function setCalltype($calltype)
+    {
+        $this->calltype = $calltype;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFb()
+    {
+        return $this->fb;
+    }
+
+    /**
+     * @param mixed $fb
+     */
+    public function setFb($fb)
+    {
+        $this->fb = $fb;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInsta()
+    {
+        return $this->insta;
+    }
+
+    /**
+     * @param mixed $insta
+     */
+    public function setInsta($insta)
+    {
+        $this->insta = $insta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNetwork()
+    {
+        return $this->network;
+    }
+
+    /**
+     * @param mixed $network
+     */
+    public function setNetwork($network)
+    {
+        $this->network = $network;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOffre()
+    {
+        return $this->offre;
+    }
+
+    /**
+     * @param mixed $offre
+     */
+    public function setOffre($offre)
+    {
+        $this->offre = $offre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfrdv()
+    {
+        return $this->confrdv;
+    }
+
+    /**
+     * @param mixed $confrdv
+     */
+    public function setConfrdv($confrdv)
+    {
+        $this->confrdv = $confrdv;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmation()
+    {
+        return $this->confirmation;
+    }
+
+    /**
+     * @param mixed $confirmation
+     */
+    public function setConfirmation($confirmation)
+    {
+        $this->confirmation = $confirmation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRdvdep()
+    {
+        return $this->rdvdep;
+    }
+
+    /**
+     * @param mixed $rdvdep
+     */
+    public function setRdvdep($rdvdep)
+    {
+        $this->rdvdep = $rdvdep;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRdvfin()
+    {
+        return $this->rdvfin;
+    }
+
+    /**
+     * @param mixed $rdvfin
+     */
+    public function setRdvfin($rdvfin)
+    {
+        $this->rdvfin = $rdvfin;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaiementmode()
+    {
+        return $this->paiementmode;
+    }
+
+    /**
+     * @param mixed $paiementmode
+     */
+    public function setPaiementmode($paiementmode)
+    {
+        $this->paiementmode = $paiementmode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaiement()
+    {
+        return $this->paiement;
+    }
+
+    /**
+     * @param mixed $paiement
+     */
+    public function setPaiement($paiement)
+    {
+        $this->paiement = $paiement;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStarcount()
+    {
+        return $this->starcount;
+    }
+
+    /**
+     * @param mixed $starcount
+     */
+    public function setStarcount($starcount)
+    {
+        $this->starcount = $starcount;
+    }
+
+
+
+
 
 
 
