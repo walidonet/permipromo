@@ -8,7 +8,9 @@
 
 namespace OM\AdministrationBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use OM\EspaceUserBundle\Entity\User;
 
 /**
  *
@@ -31,6 +33,19 @@ class Tag
      * @ORM\Column(type="string", nullable=true)
      */
     private $nom ;
+
+
+
+    /**
+     * Tag constructor.
+     */
+    public function __construct()
+    {
+
+    }
+
+
+
 
     /**
      * @return mixed

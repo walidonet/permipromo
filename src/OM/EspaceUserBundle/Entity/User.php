@@ -6,6 +6,9 @@
  * Time: 11:42
  */
 namespace OM\EspaceUserBundle\Entity;
+
+
+
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
@@ -66,38 +69,45 @@ class User extends BaseUser
     private $clients;
 
     /**
-     * @ORM\ManyToMany(targetEntity="OM\AdministrationBundle\Entity\tag", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="OM\AdministrationBundle\Entity\Tag", cascade={"persist"})
+     *
+     *
      */
     private $tags;
+
+
 
     /**
      * User constructor.
      */
     public function __construct()
     {
+        parent::__construct();
         $this->tags = new ArrayCollection();
+
     }
 
-
-    public function addCategory(Tag $tag)
+    public function addTag(Tag $tags)
     {
 
-        $this->tags[] = $tag;
+        $this->tags[] = $tags;
 
         return $this;
     }
 
-    public function removeCategory(Tag $tag)
+    public function removeTag(Tag $tags)
     {
 
-        $this->tags->removeElement($tag);
+        $this->tags->removeElement($tags);
     }
 
 
-    public function getCategories()
+    public function getTags()
     {
         return $this->tags;
     }
+
+
 
 
     /**
@@ -260,10 +270,10 @@ class User extends BaseUser
         $this->monitor = $monitor;
     }
 
-
-
-
-
+    public function __toString()
+    {
+        return $this->getUsername();
+    }
 
 
 }
