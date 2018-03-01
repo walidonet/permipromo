@@ -8,6 +8,7 @@ class OMEspaceUserBundle extends Bundle
 {
     public function getParent()
     {
+
         return 'FOSUserBundle';
     }
 }

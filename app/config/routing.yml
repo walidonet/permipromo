@@ -16,6 +16,19 @@ app:
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+# app/config/routing.yml
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+
+
+user_api_demos:
+    type: rest
+    resource: OM\EspaceUserBundle\Controller\DemoController
+
 #tag rest
 tag:
     resource: "@OMAdministrationBundle/Controller/TagController.php"

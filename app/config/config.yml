@@ -67,13 +67,41 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+
 fos_user:
-    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
-    firewall_name: main
+    db_driver: orm
+    firewall_name: api
     user_class: OM\EspaceUserBundle\Entity\User
+    group:
+        group_class: OM\EspaceUserBundle\Entity\Group
     from_email:
         address: yourmail@yourdomain.com
         sender_name: demo
     registration:
         form:
             type: OM\EspaceUserBundle\Form\RegistrationType
+
+
+fos_rest:
+    routing_loader:
+        default_format: json                            # All responses should be JSON formated
+        include_format: false
+
+
+# app/config/config.yml
+nelmio_api_doc: ~
+
+fos_rest:
+    routing_loader:
+        default_format: json                            # All responses should be JSON formated
+        include_format: false
+
+fos_oauth_server:
+    db_driver:           orm
+    client_class:        OM\AuthBundle\Entity\Client
+    access_token_class:  OM\AuthBundle\Entity\AccessToken
+    refresh_token_class: OM\AuthBundle\Entity\RefreshToken
+    auth_code_class:     OM\AuthBundle\Entity\AuthCode
+    service:
+        user_provider: fos_user.user_provider.username
