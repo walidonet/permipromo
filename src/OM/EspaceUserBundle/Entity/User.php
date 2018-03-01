@@ -8,6 +8,7 @@
 namespace OM\EspaceUserBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use OM\AdministrationBundle\Entity\Tag;
 /**
  *
  *
@@ -61,6 +62,12 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="OM\EspaceUserBundle\Entity\User", mappedBy="monitor")
      */
     private $clients;
+    /**
+     * @ORM\ManyToMany(targetEntity="OM\AdministrationBundle\Entity\Tag", cascade={"persist"})
+     *
+     *
+     */
+    private $tags;
 
     /**
      * User constructor.
@@ -230,6 +237,23 @@ class User extends BaseUser
     {
         $this->monitor = $monitor;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
 
 
 
