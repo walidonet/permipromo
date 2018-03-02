@@ -32,4 +32,41 @@ class RefreshToken extends BaseRefreshToken
      * @ORM\ManyToOne(targetEntity="OM\EspaceUserBundle\Entity\User")
      */
     protected $user;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+
+
 }

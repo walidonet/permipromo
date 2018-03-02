@@ -6,14 +6,9 @@
  * Time: 11:42
  */
 namespace OM\EspaceUserBundle\Entity;
-
-
-
-use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use OM\AdministrationBundle\Entity\Tag;
-
 /**
  *
  *
@@ -67,7 +62,6 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="OM\EspaceUserBundle\Entity\User", mappedBy="monitor")
      */
     private $clients;
-
     /**
      * @ORM\ManyToMany(targetEntity="OM\AdministrationBundle\Entity\Tag", cascade={"persist"})
      *
@@ -75,39 +69,13 @@ class User extends BaseUser
      */
     private $tags;
 
-
-
     /**
      * User constructor.
      */
     public function __construct()
     {
         parent::__construct();
-        $this->tags = new ArrayCollection();
-
     }
-
-    public function addTag(Tag $tags)
-    {
-
-        $this->tags[] = $tags;
-
-        return $this;
-    }
-
-    public function removeTag(Tag $tags)
-    {
-
-        $this->tags->removeElement($tags);
-    }
-
-
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
-
 
 
     /**
@@ -270,10 +238,27 @@ class User extends BaseUser
         $this->monitor = $monitor;
     }
 
-    public function __toString()
+    /**
+     * @return mixed
+     */
+    public function getTags()
     {
-        return $this->getUsername();
+        return $this->tags;
     }
+
+    /**
+     * @param mixed $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+
+
+
+
+
 
 
 }
