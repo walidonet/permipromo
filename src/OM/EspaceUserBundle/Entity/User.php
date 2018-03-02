@@ -30,27 +30,27 @@ class User extends BaseUser
      */
     protected $id;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $firstname = "";
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $lastname = "";
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $idcard = "";
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $phone = "";
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $adress = "";
     /**
-     * @ORM\Column(type="blob")
+     * @ORM\Column(type="blob",nullable=true)
      */
     private $picture = "";
     /**
