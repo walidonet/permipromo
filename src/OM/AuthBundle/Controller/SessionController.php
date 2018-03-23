@@ -35,7 +35,8 @@ class SessionController extends FOSRestController
         $user = $this->get('doctrine.orm.entity_manager')
             ->getRepository('OMEspaceUserBundle:User')
             ->find($userid->getUser()->getId());
-        return $user->getId();
+        return $user;
+        //return $user->getId();
     }
     /**
      * @Rest\Post("/api/add")
@@ -50,21 +51,38 @@ class SessionController extends FOSRestController
         $reg->registerAction($request);
 
     }
+    /**
+     * @Rest\Put("/api/change/{id}")
+     * @param Request $request
+     * @return View
+     */
+    public function changeAction(Request $request)
+    {
+
+
+        $reg = new RegistrationController( $this->container);
+        $reg->updaterAction($request);
+
+    }
 
     /**
-     * @Rest\Get("/api/prospect", name="add_sana")
-     * @return View
+     * @Rest\Get("/api/prospect")
      */
     public function getAllproespectAction()
     {
+        //var_dump('hello');die();
         $userid = $this->get('doctrine.orm.entity_manager')
             ->getRepository('OMEspaceUserBundle:User')
             ->findAll();
+        //return $userid;
+
         $a=count($userid);
         $pro=array();
-        for($i=0;$i<$a;$i++){
-            if($userid[$i]->getRoles()==array('ROLE_PROSPECT')){
 
+        for($i=0;$i<$a;$i++){
+
+           // if($userid[$i]->getRoles()==array('ROLE_PROSPECT')){
+            if($userid[$i]->getRoles()[0]=='ROLE_PROSPECT'){
                 array_push($pro,$userid[$i]);
             }
         }
@@ -74,20 +92,13 @@ class SessionController extends FOSRestController
      * @Rest\Get("/api/prospect/{id}", name="getpros")
      * @return View
      */
-    public function getProespectbyIdAction()
+    public function getProespectbyIdAction(Request $request)
     {
         $userid = $this->get('doctrine.orm.entity_manager')
             ->getRepository('OMEspaceUserBundle:User')
-            ->findAll();
-        $a=count($userid);
-        $pro=array();
-        for($i=0;$i<$a;$i++){
-            if($userid[$i]->getRoles()==array('ROLE_PROSPECT')){
+            ->find($request->get('id'));
 
-                array_push($pro,$userid[$i]);
-            }
-        }
-        return $pro;
+        return $userid;
     }
 
 

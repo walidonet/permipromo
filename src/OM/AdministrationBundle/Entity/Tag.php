@@ -33,6 +33,10 @@ class Tag
      * @ORM\Column(type="string", nullable=true)
      */
     private $nom ;
+    /**
+     * @ORM\ManyToMany(targetEntity="OM\EspaceUserBundle\Entity\User",inversedBy="tags",cascade={"persist"})
+     */
+    private $prospect;
 
 
 
@@ -78,6 +82,23 @@ class Tag
     {
         $this->nom = $nom;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getProspect()
+    {
+        return $this->prospect;
+    }
+
+    /**
+     * @param mixed $prospect
+     */
+    public function setProspect($prospect)
+    {
+        $this->prospect = $prospect;
+    }
+
 
 
 

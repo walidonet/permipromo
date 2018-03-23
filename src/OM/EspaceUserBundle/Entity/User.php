@@ -43,6 +43,67 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string",nullable=true)
      */
+    private $phone2 = "";
+    /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $starcount = "";
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $paiement = "";
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $paiementmode = "";
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $note = "";
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $adress2 = "";
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $calltype = "";
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $offre = "";
+    /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    private $network;
+    /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    private $insta;
+    /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    private $fb;
+    /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    private $confirmation = "";
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     */
+    private $rdvdep = "";
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     */
+    private $confrdv = "";
+    /**
+     * @ORM\Column(type="datetime",nullable=true)
+     */
+    private $rdvfin = "";
+
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
     private $adress = "";
     /**
      * @ORM\Column(type="blob",nullable=true)
@@ -63,7 +124,7 @@ class User extends BaseUser
      */
     private $clients;
     /**
-     * @ORM\ManyToMany(targetEntity="OM\AdministrationBundle\Entity\Tag", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="OM\AdministrationBundle\Entity\Tag",inversedBy="prospect",cascade={"persist"})
      *
      *
      */
@@ -251,7 +312,247 @@ class User extends BaseUser
      */
     public function setTags($tags)
     {
-        $this->tags = $tags;
+        $this->tags[] = $tags;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaiementmode()
+    {
+        return $this->paiementmode;
+    }
+
+    /**
+     * @param mixed $paiementmode
+     */
+    public function setPaiementmode($paiementmode)
+    {
+        $this->paiementmode = $paiementmode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdress2()
+    {
+        return $this->adress2;
+    }
+
+    /**
+     * @param mixed $adress2
+     */
+    public function setAdress2($adress2)
+    {
+        $this->adress2 = $adress2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCalltype()
+    {
+        return $this->calltype;
+    }
+
+    /**
+     * @param mixed $calltype
+     */
+    public function setCalltype($calltype)
+    {
+        $this->calltype = $calltype;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmation()
+    {
+        return $this->confirmation;
+    }
+
+    /**
+     * @param mixed $confirmation
+     */
+    public function setConfirmation($confirmation)
+    {
+        $this->confirmation = $confirmation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfrdv()
+    {
+        return $this->confrdv;
+    }
+
+    /**
+     * @param mixed $confrdv
+     */
+    public function setConfrdv($confrdv)
+    {
+        $this->confrdv = $confrdv;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone2()
+    {
+        return $this->phone2;
+    }
+
+    /**
+     * @param mixed $phone2
+     */
+    public function setPhone2($phone2)
+    {
+        $this->phone2 = $phone2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStarcount()
+    {
+        return $this->starcount;
+    }
+
+    /**
+     * @param mixed $starcount
+     */
+    public function setStarcount($starcount)
+    {
+        $this->starcount = $starcount;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param mixed $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOffre()
+    {
+        return $this->offre;
+    }
+
+    /**
+     * @param mixed $offre
+     */
+    public function setOffre($offre)
+    {
+        $this->offre = $offre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFb()
+    {
+        return $this->fb;
+    }
+
+    /**
+     * @param mixed $fb
+     */
+    public function setFb($fb)
+    {
+        $this->fb = $fb;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInsta()
+    {
+        return $this->insta;
+    }
+
+    /**
+     * @param mixed $insta
+     */
+    public function setInsta($insta)
+    {
+        $this->insta = $insta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPaiement()
+    {
+        return $this->paiement;
+    }
+
+    /**
+     * @param mixed $paiement
+     */
+    public function setPaiement($paiement)
+    {
+        $this->paiement = $paiement;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNetwork()
+    {
+        return $this->network;
+    }
+
+    /**
+     * @param mixed $network
+     */
+    public function setNetwork($network)
+    {
+        $this->network = $network;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRdvdep()
+    {
+        return $this->rdvdep;
+    }
+
+    /**
+     * @param mixed $rdvdep
+     */
+    public function setRdvdep($rdvdep)
+    {
+        $this->rdvdep = $rdvdep;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRdvfin()
+    {
+        return $this->rdvfin;
+    }
+
+    /**
+     * @param mixed $rdvfin
+     */
+    public function setRdvfin($rdvfin)
+    {
+        $this->rdvfin = $rdvfin;
     }
 
 

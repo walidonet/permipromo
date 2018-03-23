@@ -46,10 +46,11 @@ class TagController extends FOSRestController
     }
 
 
+
     // Liste des tags
 
     /**
-     * @Rest\Get("/tag", name="_alltags")
+     * @Rest\Get("/api/tag", name="_alltags")
      *
      */
     public function getTagAction()

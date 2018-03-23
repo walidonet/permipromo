@@ -26,6 +26,13 @@ class AppKernel extends Kernel
             new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new OM\AuthBundle\OMAuthBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
+            new Sonata\NotificationBundle\SonataNotificationBundle(),
+            new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new OM\Application\Sonata\NotificationBundle\ApplicationSonataNotificationBundle(),
+            new Glooby\TaskBundle\GloobyTaskBundle(),
+            //OM\Application\Sonata\NotificationBundle\ApplicationSonataNotificationBundle::class => ['all' => true],
+
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

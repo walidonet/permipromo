@@ -11,6 +11,7 @@ use FOS\UserBundle\Controller\RegistrationController as BaseController;
 /*****/
 
 use OM\AdministrationBundle\Entity\Folder;
+use OM\AdministrationBundle\Entity\Tag;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -77,16 +78,31 @@ class RegistrationController extends BaseController
         /***/
         $firstname = $request->get('firstname');
         $lastname = $request->get('lastname');
+        $tags = $request->get('tags');
 
         /***/
 
 
         $user = $userManager->createUser();
+        $a=json_decode($tags);
+        $ltag =  (array) new Tag();
+        for($c=0;$c<count($a);$c++){
+            $tmp = $this->get('doctrine.orm.entity_manager')
+                ->getRepository('OMAdministrationBundle:Tag')
+                ->findOneBynom($a[$c]);
+
+            array_push($ltag,$tmp);
+            $user->setTags($tmp);
+
+        }
+        //$user->setTags($ltag);
        //var_dump($password['first_options']);die();
         //$user->setUsername($username);
        // $user->setEmail($email);
 
         $user->setUsername($phone);
+        //$user->setTags($tags);
+        //$user->setEmail($tags);
         $user->setEmail($phone."@gmail.com");
         $user->setEnabled(true);
         $user->setPassword($phone);
@@ -100,29 +116,29 @@ class RegistrationController extends BaseController
         $user->setRdvfin(new \DateTime($rdvfin));
         $user->setRdvfin(new \DateTime($rdvfin));
         $user->setRdvdep(new \DateTime($rdvdep));
-        if(empty($confirmation)){
-            $user->setConfirmation(false);
+        if($confirmation== null|| $confirmation == 'false'){
+            $user->setConfirmation(0);
         }
         else{
-            $user->setConfirmation($confirmation);
+            $user->setConfirmation(1);
         }
         $user->setConfrdv(new \DateTime($confrdv));
         $user->setOffre($offre);
-        if(empty($network)){
-            $user->setNetwork(false);
+        if($network== '' || $network == 'false'){
+            $user->setNetwork(0);
         }else {
-            $user->setNetwork($network);
+            $user->setNetwork(1);
         }
-        if(empty($insta)){
-            $user->setInsta(false);
+        if($insta== ''|| $insta == 'false'){
+            $user->setInsta(0);
         }else {
-            $user->setInsta($insta);
+            $user->setInsta(1);
         }
-        if(empty($fb)){
-            $user->setFb(false);
+        if($fb== ''|| $fb == 'false'){
+            $user->setFb(0);
         }
         else {
-            $user->setFb($fb);
+            $user->setFb(1);
         }
         $user->setCalltype($calltype);
         $user->setNote($note);
@@ -144,15 +160,45 @@ class RegistrationController extends BaseController
     }
 
 
-    /**
-     *
-     * @Route("/aa", name="user_aa")
-     * @Method("Get")
-     * @param Request $request
-     * @return Response
-     */
-    public function testAction(Request $request)
+
+    public function updaterAction(Request $request)
     {
+
+        $userManager = $this->get('fos_user.user_manager');
+        //$user = $userManager->createUser();
+        $user = $this->get('doctrine.orm.entity_manager')
+            ->getRepository('OMEspaceUserBundle:User')
+            ->find($request->get('id'));
+      //  var_dump($request->get('id'));die();
+       // var_dump($user->getEmail());die();
+        // $confrdv = $request->get('confrdv');
+        $phone = $request->get('phone');
+        $phone2 = $request->get('phone2');
+        $adress = $request->get('adress');
+        $adress2 = $request->get('adress2');
+        $offre = $request->get('offre');
+        $note = $request->get('note');
+        $rdvdep = $request->get('rdvdep');
+        $firstname = $request->get('firstname');
+        $lastname = $request->get('lastname');
+//var_dump($firstname);die();
+
+        $user->setFirstname($firstname);
+        $user->setLastname($lastname);
+        $user->setRdvdep(new \DateTime($rdvdep));
+        $user->setOffre($offre);
+        $user->setNote($note);
+        $user->setAdress2($adress2);
+        $user->setAdress($adress);
+        $user->setPhone2($phone2);
+        $user->setPhone($phone);
+        $user->setRoles(array('ROLE_MONITOR'));
+        $userManager->updateUser($user, true);
+
+
+        $response = new JsonResponse();
+        $response->setData("User" );
+        return $response;
 
     }
 

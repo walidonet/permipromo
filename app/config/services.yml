@@ -33,3 +33,9 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+
+    glooby_task.ping:
+        class: OM\Application\Sonata\NotificationBundle\Controller\SNotificationController
+        tags:
+            - { name: glooby.scheduled_task }

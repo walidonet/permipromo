@@ -34,3 +34,13 @@ tag:
     resource: "@OMAdministrationBundle/Controller/TagController.php"
     prefix:   /
     type:     rest
+#not rest
+notts:
+    resource: "@OMAdministrationBundle/Controller/NotificationController.php"
+    prefix:   /
+    type:     rest
+#session rest
+session:
+    resource: "@OMAuthBundle/Controller/SessionController.php"
+    prefix:   /
+    type:     rest
